@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tạo form đơn giản</title>
+</head>
+<body>
+<h1 style="text-align: center;background: chocolate">Tạo Form cơ bản</h1>
+<form>
+    <fieldset>
+        <legend>
+            Sở thích của bạn
+        </legend>
+        <table>
+
+            <tr>
+       <td> Họ và tên:</td>
+           <td> <input type="text" name="hvt" ></td>
+            </tr>
+
+            <tr>
+        <td>Email:</td>
+        <td><input type="text" name="email"></td>
+            </tr>
+
+            <tr>
+
+                <td>Sở thích</td>
+        <td>
+            <input type="checkbox" name="hobby" >Thể thao<br>
+            <input type="checkbox" name="hobby" >Lướt web<br>
+            <input type="checkbox" name="hobby" >Du lịch
+        </td>
+                <td>
+            <input type="checkbox" name="hobby" >Âm nhạc<br>
+            <input type="checkbox" name="hobby" >Chơi game
+
+                </td>
+                <td>
+            <input type="checkbox" name="hobby" >Đọc sách<br>
+                    <input type="checkbox" name="hobby" >Điện ảnh
+        </td>
+
+
+            </tr>
+        </table>
+        <br/>
+        <div>
+        <input type="submit" value="gửi thông tin">
+        <input type="reset" value="reset">
+        </div>
+        <br/>
+
+
+    </fieldset>
+</form>
+<br/>
+<br/>
+<br/>
+<form>
+    <h1 style="text-align: center;background: chocolate">Đăng ký học viên</h1>
+    <table>
+        <tr>
+            <td>Họ và tên</td>
+            <td><input type="text" name="hvt" value=""/></td>
+        </tr>
+        <tr>
+            <td>Ngày sinh</td>
+            <td><input type="text" name="ns" value=""/></td>
+        </tr>
+        <tr>
+            <td>Giới tính</td>
+            <td>
+                <input type="radio" name="gt" value=""/>Nam
+                <input type="radio" name="gt" value=""/>Nữ
+            </td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td><textarea></textarea></td>
+        </tr>
+        <tr>
+            <td>Lớp</td>
+            <td><select>
+                <option value="">JAVA</option>
+                <option value="">PHP</option>
+                <option value="">Other</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td><input type="text" name="email" value=""/></td>
+        </tr>
+
+
+
+
+
+    </table>
+    <div>
+        <input type="button" value="Đăng ký"/>
+        <input type="reset" value="Reset"/>
+    </div>
+</form>
+
+</body>
+</html>
