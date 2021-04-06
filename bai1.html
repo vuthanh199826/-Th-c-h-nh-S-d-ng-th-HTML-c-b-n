@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h4>ex1</h4>
+<button type="button" onclick="Showmsg();">click vào đây</button>
+<h4>ex2</h4>
+<div id="mesdiv"></div>
+<button type="button" onclick="showmsg2();">click</button>
+<h4>ex3</h4>
+<button type="button" onclick="showmsg3();">click here</button>
+<h4>ex4</h4>
+<button type="button" onclick="showmsg4();">click here</button>
+</body>
+
+</html>
+<script>
+function Showmsg()
+{
+    alert("hello");
+}
+function  showmsg2(){
+    document.getElementById("mesdiv").innerHTML="xin chào";
+}
+function showmsg3(){
+    document.write("hello 3");
+}
+function showmsg4(){
+ console.log("hello 4");
+}
+</script>
