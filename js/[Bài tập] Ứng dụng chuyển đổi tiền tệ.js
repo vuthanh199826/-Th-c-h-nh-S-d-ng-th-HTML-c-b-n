@@ -3,7 +3,7 @@ function test() {
     let a = document.getElementById("benA").value;
     let b = document.getElementById("benB").value;
 
-    //
+
      if(input < 0 )
          alert("mệnh giá phải lớn hơn 0, nhập lại");
      else
