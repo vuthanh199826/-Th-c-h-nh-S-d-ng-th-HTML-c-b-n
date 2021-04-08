@@ -38,3 +38,5 @@ function moveselection(evt)
 function press(){
   window.addEventListener('keydown',moveselection)
 };
+// xây hàm khởi tạo pess vào thẻ body
+
