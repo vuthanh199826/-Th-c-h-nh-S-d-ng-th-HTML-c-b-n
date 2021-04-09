@@ -22,7 +22,7 @@ function nhap() {
         case '2':
             document.getElementById('xuat').value=" tháng "+getm+ " có 28 hoặc 29 ngày ";
             break;
-            d
+
     }
 
 }
