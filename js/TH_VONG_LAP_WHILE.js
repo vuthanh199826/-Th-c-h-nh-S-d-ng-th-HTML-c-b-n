@@ -13,3 +13,4 @@ alert(sum);
 // while (i < 100) {
 //     document.write("<hr width = " + i + "%>");
 //     i++;
+}
