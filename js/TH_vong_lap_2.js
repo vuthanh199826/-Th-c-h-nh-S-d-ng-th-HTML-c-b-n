@@ -48,16 +48,16 @@
 // }
 
 
-// for (i = 5; i >= 1; i--) {
-//     for (j = 1; j <= i; j++) {
-//         document.write('&nbsp;&nbsp;');
-//     }
-//     for (k = 5; k >= i; k--) {
-//         document.write('*');
-//     }
-//     document.write('<br/>');
-// }
-// document.write('<br/>');
+for (i = 5; i >= 1; i--) {
+    for (j = 1; j <= i; j++) {
+        document.write('&nbsp;&nbsp;');
+    }
+    for (k = 5; k >= i; k--) {
+        document.write('*');
+    }
+    document.write('<br/>');
+}
+document.write('<br/>');
 //
 //
 //
@@ -91,33 +91,22 @@
 // }
 
 //
-// while (true) {
-//     let sotienbandau = +prompt("nhập số tiền gửi");
-//     let tienlai;
-//     let laixuat = +prompt("Nhập lãi xuất");
-//     let sothang = +prompt("nhập số tháng");
-//     let sotiencoduoc;
-//     if(sotienbandau == 0){
-//         break;
-//     }else {
-//         for (let i = 1; i <= sothang; i++) {
-//             tienlai = laixuat * sotienbandau
-//             sotiencoduoc = sotienbandau + tienlai;
-//             sotienbandau = sotiencoduoc;
-//
-//         }
-//         alert(sotiencoduoc);
-//     }
-// }
+while (true) {
+    let sotienbandau = +prompt("nhập số tiền gửi");
+    let tienlai;
+    let laixuat = +prompt("Nhập lãi xuất");
+    let sothang = +prompt("nhập số tháng");
+    let sotiencoduoc;
+    if(sotienbandau == 0){
+        break;
+    }else {
+        for (let i = 1; i <= sothang; i++) {
+            tienlai = laixuat * sotienbandau
+            sotiencoduoc = sotienbandau + tienlai;
+            sotienbandau = sotiencoduoc;
 
-var x = 0;
-
-for (var i=1; i<4; i++)
-{
-    x = x + i;
-    document.write(x+'<br/>');
-    document.write(i);
+        }
+        alert(sotiencoduoc);
+    }
 }
-
-
 
