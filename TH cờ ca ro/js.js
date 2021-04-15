@@ -14,7 +14,7 @@ document.write("<table border='1'>");
 for(let i =0; i<max; i++){
     document.write("<tr>");
     for(let j=0; j<max; j++){
-        document.write('<td onclick="change(this)" style="width: 25px;height: 25px;text-align: center">');
+        document.write('<td onclick="change(this);check(board[i][j])" style="width: 25px;height: 25px;text-align: center">');
         document.write(board[i][j]);
         document.write('</td>');
     }
@@ -33,6 +33,15 @@ function change(td){
         }
     }
 }
+
+function check ( board[i][j] ){
+    if(board[i][j]=='X' && board[i][j+1]=='X'){
+        alert("win")
+    };
+}
+
+
+
 // let board = [];
 // let max = 10;
 // let turn = 'X';
