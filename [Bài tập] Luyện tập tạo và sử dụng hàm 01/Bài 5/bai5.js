@@ -9,6 +9,5 @@ function check(str) {
     }
     return "Không có ngôi sao này!";
 };
-
 let chomsao = check(prompt("nhập tên ngôi sao vào đây:"))
 alert(chomsao);
