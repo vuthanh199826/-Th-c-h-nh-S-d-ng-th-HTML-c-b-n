@@ -1,12 +1,47 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<canvas height="200" width="200" id="mycanvas"></canvas>-->
+<!--</body>-->
+<!--</html>-->
+<!--<script src="1.js"></script>-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-
+    <title>Ung_dung_quan_ly_san_pham</title>
 </head>
 <body>
-<canvas height="200" width="200" id="mycanvas"></canvas>
+<h3>Add New Product</h3>
+<input type="text">
+<button>Add</button>
+<h3>Display All Product</h3>
+<table id='Display' border="1">
+
+    <p id="xxx"></p>
+
+
+</table>
+<script>
+    let array_product = ["iphone 6", "samsung note 10", "xiaomi mi 9"];
+    let str = '<tr>'+
+        '<td>Product Name</td>'+
+        '<td></td>' +
+        '<td>' + array_product.length + '</td>' +
+        '</tr>';
+    for ( let i = 0; i < array_product.length; i++) {
+        str += '<tr>' +
+            '<td>' + array_product[i] + '</td>' +
+            '<td><button>Edit</button></td>' +
+            '<td><button>Delete</button></td>' +
+            '</tr>'
+    }
+    document.getElementById("xxx").innerText = str;
+</script>
 </body>
 </html>
-<script src="1.js"></script>

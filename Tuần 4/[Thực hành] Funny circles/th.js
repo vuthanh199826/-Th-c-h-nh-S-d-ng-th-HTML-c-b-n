@@ -98,7 +98,6 @@ function getRandomColor(){
     ctx.fillStyle = color
     ctx.fill();
  }
-
 function createMultiCircle(x){
     var begin = 0;
     while (begin<x){
