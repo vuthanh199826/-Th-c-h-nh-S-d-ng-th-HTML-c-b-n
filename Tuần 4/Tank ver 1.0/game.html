@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Bullet.js"></script>
+    <script src="Tank.js"></script>
+</head>
+<body>
+<canvas id="game" width="800px" height="600px" style="border: 1px solid black"></canvas>
+<!--<img style="display: none" id="img1" src="Car_Down.png">-->
+<!--<img style="display: none" id="img2" src="Car_Up.png">-->
+<!--<img style="display: none" id="img3" src="Car_Left.png">-->
+<!--<img style="display: none" id="img4" src="Car_Right.png">-->
+<script>
+    let tank = new Tank("T1",100,100);
+    let canvas = document.getElementById('game');
+    function move(evt) {
+        console.log(evt.key);
+        switch (evt.key) {
+            case "ArrowUp":
+                tank.direction = 'up';
+                break;
+            case "ArrowDown":
+                tank.direction = 'down';
+                break;
+            case "ArrowLeft":
+                tank.direction = 'left';
+                break;
+            case "ArrowRight":
+                tank.direction = 'right';
+                break;
+
+        }
+
+    }
+
+    function clearScreen() {
+        let ctx = canvas.getContext('2d');
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+    }
+
+    function main() {
+        clearScreen();
+        tank.check();
+        tank.move();
+        tank.draw(canvas);
+    }
+
+    setInterval(main, 1);
+
+    window.addEventListener('keydown',move)
+    window.addEventListener('keypress',move)
+    window.addEventListener('keyup',move)
+</script>
+</body>
+</html>
