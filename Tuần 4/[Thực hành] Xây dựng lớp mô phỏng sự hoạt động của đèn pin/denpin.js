@@ -38,7 +38,7 @@ function Flashlamp (){
 let battery = new Battery();
 battery.setEnergy(100);
 let flash = new Flashlamp();
-flash.setBattery(battery);
+flash.setBattery(100);
 
 flash.turnOn();
 
