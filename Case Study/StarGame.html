@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #but{
+            position: relative;
+            top: 200px;
+            text-align: center;
+            font-family: "Corbel Light" ;
+            /*font: caption;*/
+            font-size: 35px;
+            cursor: pointer;
+            width: 200px;
+            height: 50px;
+            border-radius: 25px ;
+        }
+        #but:hover{
+            color: brown;
+            font: caption;
+            font-size: 35px;
+
+        }
+
+        #lb:hover{
+            color: brown;
+        }
+        #lb{
+            font-family: "Corbel Light";
+            position: relative;
+            top: 200px;
+            cursor: pointer;
+        }
+        body{
+            background: url("backgroundStart.png") ;
+            background-size: cover;
+            width: 1350px;
+            height: 590px;
+        }
+        #showHowToPlay{
+            cursor: none;
+        }
+        #ok:hover{
+            color: brown;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<audio src="thamestart.mp3" loop autoplay></audio>
+<center><label onclick="nextPage()" id="but" type="button">Start Game</label></center>
+<center><label onclick="howToPlay()" id="lb">How to play</label></center>
+<center><label hidden onclick="howToPlay()" id="showHowToPlay" >Sử dụng phím di chuyển để di chuyển xe tăng, nhấn phím space để bắn</label></center><br/>
+<center><label onclick="hideHowToPlay()" hidden id="ok">OK</label></center>
+<script>
+
+    function nextPage(){
+        window.location.href = "case.html";
+    }
+    function howToPlay(){
+        document.getElementById("showHowToPlay").hidden = false;
+        document.getElementById("ok").hidden = false;
+    }
+    function hideHowToPlay(){
+        document.getElementById("showHowToPlay").hidden = true;
+        document.getElementById("ok").hidden = true;
+    }
+
+</script>
+
+</body>
+</html>

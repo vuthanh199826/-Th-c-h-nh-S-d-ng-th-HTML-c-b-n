@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tank 1.0</title>
+<style>
+    body{
+       background: url("https://images.pexels.com/photos/268373/pexels-photo-268373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+    }
+</style>
+
+
+
+</head>
+<body onload="move()">
+<audio src="theme.mp3" autoplay loop></audio>
+<canvas style="background: url('https://images.pexels.com/photos/268373/pexels-photo-268373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940') " id="mycanvas" width="1350" height="600"></canvas>
+<img id="down" style="display: none" src="down.png">
+<img id="up" style="display: none" src="up.png">
+<img id="left" style="display: none" src="left.png">
+<img id="right" style="display: none" src="right.png">
+
+<img id="bulletUp" style="display: none" src="bulletUp.png">
+<img id="bulletDown" style="display: none" src="bulletDown.png">
+<img id="bulletLeft" style="display: none" src="bulletLeft.png">
+<img id="bulletRight" style="display: none" src="bulletRight.png">
+<img id="bulletTopLeft" style="display: none" src="bulletTopLeft.png" height="247" width="247"/>
+<img id="bulletTopRight" style="display: none" src="bulletTopRight.png" height="247" width="247"/>
+<img id="bulletBotLeft" style="display: none" src="bulletBotLeft.png" height="247" width="247"/>
+<img id="bulletBotRight" style="display: none" src="bulletBotRight.png" height="247" width="247"/>
+
+<img id="redLeft" style="display: none" src="autoTank/tankRedLeft.png" height="141" width="165"/>
+<img id="redRight" style="display: none" src="autoTank/tankRedRight.png" height="141" width="165"/>
+<img id="redUp" style="display: none" src="autoTank/tankRedUp.png" height="165" width="141"/>
+<img id="redDown"  style="display: none" src="autoTank/tankRedDown.png" height="165" width="141"/>
+
+<img id="boom" style="display: none" src="autoTank/boom.png" height="372" width="670"/></body>
+
+<!--<img id="BlueDown" style="display: none" src="BlueTank/tankBlueDown.png" height="167" width="151"/>-->
+<!--<img id="BlueUp" style="display: none" src="BlueTank/tankBlueUp.png" height="167" width="151"/>-->
+<!--<img id="BlueRight" style="display: none" src="BlueTank/tankBlueRight.png" height="151" width="167"/>-->
+<!--<img id="Blueleft" style="display: none" src="BlueTank/tankBlueLeft.png" height="151" width="167"/>-->
+
+
+<!--<img id="BlueUp"  style="display: none" src="boss/tankBlueUp.png" height="167" width="152"/>-->
+<!--<img id="BlueRight"  style="display: none" src="boss/tankBlueRight.png" height="152" width="167"/>-->
+<!--<img id="Blueleft" src="boss/tankBlueLeft.png"   style="display: none" height="152" width="167"/>-->
+<!--<img id="BlueDown"  style="display: none" src="boss/tankBlueDown.png" height="167" width="152"/>-->
+
+<!--<img id="bulletRight" style="display: none" src="newbulletUp.png" height="294" width="299"/>-->
+
+
+<img id="airUp" src="AirBoss/airUp.png" style="display: none"/>
+<img id="airRight" src="AirBoss/airRight.png" style="display: none" />
+<img id="airLeft" src="AirBoss/airLeft.png" style="display: none" />
+<img id="airDown" src="AirBoss/airDown.png" style="display: none" />
+
+<script src="Bullet.js"></script>
+<script src="Tank.js"></script>
+<script src="checkCrash.js"></script>
+<script src="AI.js"></script>
+<script src="AIBOSS.js"></script>
+<script src="AirBoss.js"></script>
+<script src="Main.js"></script>
+</html>

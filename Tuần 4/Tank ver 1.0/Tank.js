@@ -1,16 +1,13 @@
-function Tank(name, x, y) {
-    this.name = name;
+function Tank( x, y) {
     this.x = x;
     this.y = y;
     this.speed = 1;
-    this.bullets = [];
     this.direction = 'left';
     this.image = new Image();
     this.img = ['Car_Left','Car_Right','Car_Up','Car_Down'];
     this.image.src = this.img[0]+'.png';
     this.draw = function (canvas) {
         let ctx = canvas.getContext('2d');
-        // let image = document.getElementById(this.id);
         ctx.drawImage(this.image, this.x, this.y, 150, 150);
     }
 
@@ -47,3 +44,4 @@ function Tank(name, x, y) {
         }
     }
 }
+
