@@ -1,5 +1,5 @@
 function AutoTank(id){
-
+    this.star = [];
     this.x = Math.round(Math.random()*(1200-100)+100);
     this.y = Math.round(Math.random()*(500-100)+100);
     this.id = id;
@@ -12,6 +12,7 @@ function AutoTank(id){
     this.reloadCount = 10;
     this.count = 0;
     this.canFire = true;
+    this.hasStar = Math.floor(Math.random()*3) === 1;
 
     this.draw = function (){
         let img = document.getElementById(this.id);

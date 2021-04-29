@@ -1,15 +1,15 @@
-function AirBoss(id){
-    this.blood = 1000;
+function FinalBoss(id){
+    this.blood = 2000;
     this.x = Math.round(Math.random()*(1000-100)+100);
     this.y = Math.round(Math.random()*(400-100)+100);
     this.id = id;
-    this.bulletsOfAir = [];
+    this.bulletsOfFinalBoss = [];
     this.width = 130;
     this.height = 130;
     this.speedX = 6;
     this.speedY = 6;
     this.direction = 'down';
-    this.reloadCount = 10;
+    this.reloadCount = 50;
     this.count = 0;
     this.canFire = true;
 
@@ -17,7 +17,6 @@ function AirBoss(id){
         let image = document.getElementById(this.id);
         ctx.drawImage(image,this.x,this.y,this.width,this.height);
     }
-
     this.drawBlood = function (){
         // ctx.fillStyle = 'white';
         // ctx.fillRect(this.x, this.y - 20,  130 , 10);
@@ -85,7 +84,7 @@ function AirBoss(id){
         }
     }
 
-    this.getDirectionOfAirBoss = function (num) {
+    this.getDirectionOfFinalBoss = function (num) {
         let dirs= ['up','down','left','right','topright','topleft','botright','botleft'];
         let current = this.direction;
         let all = new Array(num).fill(current);
@@ -99,12 +98,20 @@ function AirBoss(id){
     }
     this.fire = function () {
         if(!this.canFire) return;
-
+        let bullet1 = new Bullet(this.x + 50, this.y+50,"topleft");this.bulletsOfFinalBoss.push(bullet1);
+        let bullet2 = new Bullet(this.x + 50, this.y+50,'topright');this.bulletsOfFinalBoss.push(bullet2);
+        let bullet3 = new Bullet(this.x + 50, this.y+50,'botleft');this.bulletsOfFinalBoss.push(bullet3);
+        let bullet4 = new Bullet(this.x + 50, this.y+50,'botright');this.bulletsOfFinalBoss.push(bullet4);
+        // let bullet5 = new Bullet(this.x + 50, this.y+50,"left");this.bulletsOfFinalBoss.push(bullet5);
+        // let bullet6 = new Bullet(this.x + 50, this.y+50,'right');this.bulletsOfFinalBoss.push(bullet6);
+        // let bullet7 = new Bullet(this.x + 50, this.y+50,'up');this.bulletsOfFinalBoss.push(bullet7);
+        // let bullet8 = new Bullet(this.x + 50, this.y+50,'down');this.bulletsOfFinalBoss.push(bullet8);
 
         let bullet = new Bullet(this.x + 50, this.y+50,this.direction);
         bullet.speedXoB = 10;
         bullet.speedYoB = 10;
-        this.bulletsOfAir.push(bullet);
+
+        this.bulletsOfFinalBoss.push(bullet);
         this.count = 0;
         this.canFire = false;
     }
@@ -116,9 +123,9 @@ function AirBoss(id){
     }
 }
 
-let airboss = [];
+let finalboss = [];
 
-function createAirBoss() {
+function createFinalBoss() {
     let pos = [
         [1250, 20],
         [1150, 20],
@@ -127,10 +134,10 @@ function createAirBoss() {
     ];
     for (let i = 0; i < 1; i++) {
         let rand = Math.floor(Math.random() * pos.length);
-        let air = new AirBoss('newAirDown');
+        let air = new FinalBoss('newAirDown');
         air.x = pos[rand][0];
         air.y = pos[rand][1];
-        airboss.push(air);
+        finalboss.push(air);
     }
 
 }
@@ -138,85 +145,76 @@ function createAirBoss() {
 
 
 
-function drawAirBoss(){
-    for (let i = 0; i < airboss.length; i++) {
-        airboss[i].reload();
-        airboss[i].draw();
-        airboss[i].drawBlood();
+function drawFinalBoss(){
+    for (let i = 0; i < finalboss.length; i++) {
+        finalboss[i].reload();
+        finalboss[i].draw();
+        finalboss[i].drawBlood();
     }
 }
-function randomDirecOfAirBoss() {
-    for (let i = 0; i < airboss.length; i++) {
-        airboss[i].direction = airboss[i].getDirectionOfAirBoss(98);
+function randomDirecOfFinalBoss() {
+    for (let i = 0; i < finalboss.length; i++) {
+        finalboss[i].direction = finalboss[i].getDirectionOfFinalBoss(98);
         let rand = Math.floor(Math.random() * 4);
-        if (rand === 1) {
-            airboss[i].fire();
+        if (rand === 1||rand ===2 ) {
+            finalboss[i].fire();
         }
     }
-    setTimeout(randomDirecOfAirBoss, 10);
+    setTimeout(randomDirecOfFinalBoss, 10);
 }
-randomDirecOfAirBoss();
+randomDirecOfFinalBoss();
 
-function randomAirBossMove() {
-    for (let i = 0; i < airboss.length; i++) {
-        if (airboss[i].direction === 'down') airboss[i].moveDown();
-        if (airboss[i].direction === 'up') airboss[i].moveUp();
-        if (airboss[i].direction === 'left') airboss[i].moveLeft();
-        if (airboss[i].direction === 'right') airboss[i].moveRight();
+function randomFinalBossMove() {
+    for (let i = 0; i < finalboss.length; i++) {
+        if (finalboss[i].direction === 'down') finalboss[i].moveDown();
+        if (finalboss[i].direction === 'up') finalboss[i].moveUp();
+        if (finalboss[i].direction === 'left') finalboss[i].moveLeft();
+        if (finalboss[i].direction === 'right') finalboss[i].moveRight();
 
-        if (airboss[i].direction === 'topleft') airboss[i].moveTopLeft();
-        if (airboss[i].direction === 'topright') airboss[i].moveTopRight();
-        if (airboss[i].direction === 'botleft') airboss[i].moveBotLeft();
-        if (airboss[i].direction === 'botright') airboss[i].moveBotRight();
+        if (finalboss[i].direction === 'topleft') finalboss[i].moveTopLeft();
+        if (finalboss[i].direction === 'topright') finalboss[i].moveTopRight();
+        if (finalboss[i].direction === 'botleft') finalboss[i].moveBotLeft();
+        if (finalboss[i].direction === 'botright') finalboss[i].moveBotRight();
     }
 }
 
-function moveBulletOfAirBoss() {
-    for (let i = 0; i < airboss.length; i++) {
-        for (let j = 0; j < airboss[i].bulletsOfAir.length; j++) {
-            airboss[i].bulletsOfAir[j].moveBullet();
-            airboss[i].bulletsOfAir[j].draw();
+function moveBulletOfFinalBoss() {
+    for (let i = 0; i < finalboss.length; i++) {
+        for (let j = 0; j < finalboss[i].bulletsOfFinalBoss.length; j++) {
+            finalboss[i].bulletsOfFinalBoss[j].moveBullet();
+            finalboss[i].bulletsOfFinalBoss[j].draw();
         }
     }
 }
 
-function checkCrashWithAirBoss() {
+function checkCrashWithFinalBoss() {
     for (let i = 0; i < tank.bullets.length; i++) {
-        for (let j = 0; j < airboss.length; j++) {
-            if (checkCrash(tank.bullets[i], airboss[j])) {
+        for (let j = 0; j < finalboss.length; j++) {
+            if (checkCrash(tank.bullets[i], finalboss[j])) {
                 tank.bullets.splice(i, 1);
-                if(tank.power<5){
-                    airboss[j].blood -=10;
-                }else if(tank.power>=5){
-                    airboss[j].blood -=100;
-                }
-
-                if(airboss[j].blood<=0){
-                    airboss.splice(j,1);
+                finalboss[j].blood -=100;
+                if(finalboss[j].blood<=0){
+                    finalboss.splice(j,1);
                     tank.score += 100;
                 }
-                NextStage3();
+                // NextStage();
                 break;
             }
         }
     }
 }
 
-function checkBulletOfAirBoss() {
-    for (let i = 0; i < airboss.length; i++) {
-        for (let j = 0; j < airboss[i].bulletsOfAir.length; j++) {
-            if (checkCrash(airboss[i].bulletsOfAir[j], tank)) {
-                airboss[i].bulletsOfAir.splice(j, 1);
+function checkBulletOfFinalBoss() {
+    for (let i = 0; i < finalboss.length; i++) {
+        for (let j = 0; j < finalboss[i].bulletsOfFinalBoss.length; j++) {
+            if (checkCrash(finalboss[i].bulletsOfFinalBoss[j], tank)) {
+                finalboss[i].bulletsOfFinalBoss.splice(j, 1);
                 tank.blood -= 10;
                 CheckLoser();
                 break;
             }
         }
     }
-}
-
-function NextStage3(){
-    createFinalBoss();
 }
 
 

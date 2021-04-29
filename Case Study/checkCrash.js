@@ -15,3 +15,31 @@ function checkCrash(obj1, obj2) {
         return true;
     }
 }
+
+
+function checkCrashWithAllEnemie(){
+    for (let i = 0; i < enemies.length; i++) {
+       if( checkCrash(enemies[i],tank)){
+           tank.blood -=10;
+           enemies.splice(i,1);
+           CheckLoser();
+           break;
+       }
+    }
+    for (let i = 0; i < boss.length; i++) {
+        if(checkCrash(boss[i],tank)){
+            tank.blood -=1;
+            boss[i].blood -= 1;
+            CheckLoser();
+            break;
+        }
+    }
+    for (let i = 0; i < airboss.length; i++) {
+        if(checkCrash(airboss[i],tank)){
+            tank.blood -=1;
+            airboss[i].blood -= 1;
+            CheckLoser();
+            break;
+        }
+    }
+}

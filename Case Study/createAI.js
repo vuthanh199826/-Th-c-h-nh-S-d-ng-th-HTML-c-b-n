@@ -1,8 +1,6 @@
-let tank = new Tank(600, 370, "up");
 let enemies = [];
-let a = 1;
 
-setTimeout(createEnemy, 2000);
+let a = 1;
 
 function createEnemy() {
     let pos = [
@@ -11,13 +9,14 @@ function createEnemy() {
         [0, 530],
         [1350, 530]
     ];
-    for (let i = 0; i < 5 * a; i++) {
+    for (let i = 0; i < 5 ; i++) {
         let rand = Math.floor(Math.random() * pos.length);
         let enemy = new AutoTank('redDown');
         enemy.x = pos[rand][0];
         enemy.y = pos[rand][1];
         enemies.push(enemy);
     }
+
 }
 
 function randomDirec() {
@@ -58,6 +57,7 @@ function drawAllEnemy() {
     }
 }
 
+
 function checkAllCrash() {
     for (let i = 0; i < tank.bullets.length; i++) {
         for (let j = 0; j < enemies.length; j++) {
@@ -65,6 +65,7 @@ function checkAllCrash() {
                 tank.bullets.splice(i, 1);
                 enemies[j].id = 'boom';
                 enemies[j].draw();
+                checkStar(enemies[j]);
                 enemies.splice(j, 1);
                 tank.score += 10;
                 NextStage();
@@ -82,7 +83,6 @@ function NextStage() {
         } else if (a === 3) {
             setTimeout(createBoss, 2000);
         }
-
     }
 }
 
@@ -96,13 +96,14 @@ function checkBulletOfEnemies() {
                 CheckLoser();
                 break;
             }
-            // enemies[i].bulletsOfAutoTank[j].check();
+
         }
     }
 }
 
 function CheckLoser() {
-    if (tank.blood === 0) {
+    if (tank.blood <= 0) {
+        over = true;
         if (confirm("You Lose, Your Score is " + tank.score)) {
             window.location.href = "StarGame.html";
         } else {
@@ -114,58 +115,7 @@ function CheckLoser() {
 
 
 
-function main() {
-    clearAll();
-
-    checkBulletOfAirBoss();
-    checkCrashWithAirBoss();
-    randomAirBossMove();
-    moveBulletOfAirBoss();
-    drawAirBoss();
 
 
-    checkBulletOfBoss()
-    checkCrashWithBoss()
-    randomBossMove();
-    moveBulletOfBoss();
-    drawBoss();
 
 
-    checkAllCrash();
-    randomMove();
-    tank.drawAllBullet();
-    moveAllBullet();
-    drawAllEnemy();
-    tank.reload();
-    tank.draw();
-    checkBulletOfEnemies();
-    requestAnimationFrame(main);
-}
-
-function move() {
-    window.addEventListener('keydown', moveTank);
-    // window.addEventListener('keyup', moveTank);
-    // window.addEventListener('keypress', moveTank);
-}
-
-function moveTank(evt) {
-    switch (evt.keyCode) {
-        case 38:
-            tank.moveUp();
-            break;
-        case 40:
-            tank.moveDown();
-            break;
-        case 37:
-            tank.moveLeft();
-            break;
-        case 39:
-            tank.moveRight();
-            break;
-        case 32:
-            tank.fire();
-            break;
-    }
-}
-
-main();

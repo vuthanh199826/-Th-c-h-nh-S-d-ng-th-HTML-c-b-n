@@ -1,7 +1,7 @@
-function AutoBoss(id){
-    this.blood = 100;
-    this.x = Math.round(Math.random()*(1000-100)+100);
-    this.y = Math.round(Math.random()*(400-100)+100);
+function AutoBoss(id) {
+    this.blood = 500;
+    this.x = Math.round(Math.random() * (1000 - 100) + 100);
+    this.y = Math.round(Math.random() * (400 - 100) + 100);
     this.id = id;
     this.bulletsOfBoss = [];
     this.width = 170;
@@ -13,28 +13,34 @@ function AutoBoss(id){
     this.count = 0;
     this.canFire = true;
 
-    this.draw = function (){
+    this.draw = function () {
         let image = document.getElementById(this.id);
-        ctx.drawImage(image,this.x,this.y,this.width,this.height);
+        ctx.drawImage(image, this.x, this.y, this.width, this.height);
+    }
+    this.drawBlood = function () {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(this.x, this.y - 20, 170, 10);
+        ctx.fillStyle = "rgb(164,10,10)";
+        ctx.fillRect(this.x, this.y - 20, this.blood * 170 / 500, 10);
     }
 
-    this.moveUp = function (){
-        this.id = 'redUp';
+    this.moveUp = function () {
+        this.id = 'BlueUp';
         this.check();
         this.y = this.y - this.speedY;
     }
-    this.moveDown = function (){
-        this.id = 'redDown';
+    this.moveDown = function () {
+        this.id = 'BlueDown';
         this.check();
         this.y = this.y + this.speedY;
     }
     this.moveLeft = function () {
-        this.id = 'redLeft';
+        this.id = 'BlueLeft';
         this.check();
         this.x = this.x - this.speedX;
     }
-    this.moveRight = function (){
-        this.id = 'redRight';
+    this.moveRight = function () {
+        this.id = 'BlueRight';
         this.check();
         this.x = this.x + this.speedX;
     }
@@ -51,27 +57,27 @@ function AutoBoss(id){
     }
 
     this.getDirectionOfBoss = function (num) {
-        let dirs= ['up','down','left','right','topright','topleft','botright','botleft'];
+        let dirs = ['up', 'down', 'left', 'right', 'topright', 'topleft', 'botright', 'botleft'];
         let current = this.direction;
         let all = new Array(num).fill(current);
         let diff = 100 - all.length;
         for (let i = 0; i < diff; i++) {
-            let rand = Math.floor(Math.random()*dirs.length);
+            let rand = Math.floor(Math.random() * dirs.length);
             all.push(dirs[rand]);
         }
-        let randDir = Math.floor(Math.random()*all.length);
+        let randDir = Math.floor(Math.random() * all.length);
         return all[randDir];
     }
     this.fire = function () {
-        if(!this.canFire) return;
-        let bullet = new Bullet(this.x + 35, this.y+35,this.direction);
+        if (!this.canFire) return;
+        let bullet = new Bullet(this.x + 35, this.y + 35, this.direction);
         this.bulletsOfBoss.push(bullet);
         this.count = 0;
         this.canFire = false;
     }
     this.reload = function () {
         this.count++;
-        if(this.count >= this.reloadCount){
+        if (this.count >= this.reloadCount) {
             this.canFire = true;
         }
     }
@@ -89,7 +95,7 @@ function createBoss() {
     ];
     for (let i = 0; i < 1; i++) {
         let rand = Math.floor(Math.random() * pos.length);
-        let boss1 = new AutoBoss('redDown');
+        let boss1 = new AutoBoss('BlueDown');
         boss1.x = pos[rand][0];
         boss1.y = pos[rand][1];
         boss.push(boss1);
@@ -98,14 +104,14 @@ function createBoss() {
 }
 
 
-
-
-function drawBoss(){
+function drawBoss() {
     for (let i = 0; i < boss.length; i++) {
         boss[i].reload();
         boss[i].draw();
+        boss[i].drawBlood();
     }
 }
+
 function randomDirecOfBoss() {
     for (let i = 0; i < boss.length; i++) {
         boss[i].direction = boss[i].getDirectionOfBoss(95);
@@ -116,6 +122,7 @@ function randomDirecOfBoss() {
     }
     setTimeout(randomDirecOfBoss, 10);
 }
+
 randomDirecOfBoss();
 
 function randomBossMove() {
@@ -146,9 +153,13 @@ function checkCrashWithBoss() {
         for (let j = 0; j < boss.length; j++) {
             if (checkCrash(tank.bullets[i], boss[j])) {
                 tank.bullets.splice(i, 1);
-                boss[j].blood --;
-                if(boss[j].blood===0){
-                    boss.splice(j,1);
+                if(tank.power<5) {
+                    boss[j].blood -= 10;
+                }else if(tank.power>=5){
+                    boss[j].blood -= 100;
+                }
+                if (boss[j].blood === 0) {
+                    boss.splice(j, 1);
                     tank.score += 100;
                 }
                 NextStage2();
@@ -172,9 +183,9 @@ function checkBulletOfBoss() {
     }
 }
 
-function NextStage2(){
-    if(boss.length===0){
-        setTimeout(createAirBoss,2000);
+function NextStage2() {
+    if (boss.length === 0) {
+        setTimeout(createAirBoss, 2000);
     }
 }
 
